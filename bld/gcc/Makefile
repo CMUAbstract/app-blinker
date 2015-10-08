@@ -11,4 +11,4 @@ LFLAGS = \
 
 LIBS = \
 
-VPATH = $(SRC_DIR)
+VPATH = ../../src
