@@ -7,17 +7,8 @@
 
 #include "pins.h"
 
-/* Variable placement in nonvolatile memory; linker puts this in right place */
-#define __fram __attribute__((section(".fram_vars")))
-
 // TODO: the interval calculation doesn't add up for some reason
 #define WATCHDOG_INTERVAL_BITS WDTIS__8192K // by trial and error: yields a few seconds
-
-// Sentinel value that indicates where non-volatile state was initialized
-#define NV_STATE_MAGIC 0xdeadbeef
-
-volatile __fram uint32_t nv_state_magic;
-volatile __fram unsigned nv_iter;
 
 volatile unsigned work_x;
 
@@ -60,20 +51,10 @@ static void init_hw()
 #endif
 }
 
-static void init_nv_state()
-{
-    if (nv_state_magic != NV_STATE_MAGIC) {
-        nv_state_magic = NV_STATE_MAGIC;
-        nv_iter = 0;
-    }
-}
-
 int main() {
     uint32_t i;
 
     init_hw();
-
-    init_nv_state();
 
     while(1) {
 #ifdef ENABLE_WATCHDOG
