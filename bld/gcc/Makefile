@@ -7,8 +7,8 @@ include $(MAKER_ROOT)/Makefile.gcc
 
 CFLAGS += \
 
-LFLAGS = \
+LFLAGS += \
 
-LIBS = \
+LIBS += \
 
 VPATH = ../../src
