@@ -1,4 +1,4 @@
-EXEC = busy-loop.out
+EXEC = blinker.out
 
 OBJECTS = \
 	main.o \
