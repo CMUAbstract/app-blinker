@@ -27,17 +27,6 @@ static void init_hw()
 
     PM5CTL0 &= ~LOCKLPM5;
 
-    P1OUT = 0x00;
-    P2OUT = 0x00;
-    P3OUT = 0x00;
-    P4OUT = 0x00;
-    PJOUT = 0x00;
-    P1DIR = 0x00;
-    PJDIR = 0x00;
-    P2DIR = 0x00;
-    P3DIR = 0x00;
-    P4DIR = 0x00;
-
     GPIO(PORT_LED1, DIR) |= BIT(PIN_LED1);
 
     // set clock speed to 4 MHz
