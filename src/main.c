@@ -1,14 +1,8 @@
-// #define ENABLE_WATCHDOG
-
-
 #include <msp430.h>
 #include <stdint.h>
 #include <stdbool.h>
 
 #include "pins.h"
-
-// TODO: the interval calculation doesn't add up for some reason
-#define WATCHDOG_INTERVAL_BITS WDTIS__8192K // by trial and error: yields a few seconds
 
 volatile unsigned work_x;
 
@@ -21,9 +15,7 @@ static void burn(unsigned iters)
 
 static void init_hw()
 {
-#ifndef ENABLE_WATCHDOG
     WDTCTL = WDTPW | WDTHOLD;  // Stop watchdog timer
-#endif
 
     PM5CTL0 &= ~LOCKLPM5;
 
@@ -34,10 +26,6 @@ static void init_hw()
     CSCTL1 = DCOFSEL0 | DCOFSEL1;
     CSCTL2 = SELA_0 | SELS_3 | SELM_3;
     CSCTL3 = DIVA_0 | DIVS_0 | DIVM_0;
-
-#ifdef ENABLE_WATCHDOG
-    WDTCTL = WDTPW | WATCHDOG_INTERVAL_BITS | WDTCNTCL;
-#endif
 }
 
 int main() {
@@ -46,9 +34,6 @@ int main() {
     init_hw();
 
     while(1) {
-#ifdef ENABLE_WATCHDOG
-        WDTCTL = WDTPW | WATCHDOG_INTERVAL_BITS | WDTCNTCL;  // poke watchdog
-#endif
 
         GPIO(PORT_LED1, OUT) ^= BIT(PIN_LED1);
 
