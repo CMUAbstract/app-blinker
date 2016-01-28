@@ -1,4 +1,4 @@
-EXEC = blinker.out
+EXEC = blinker
 
 OBJECTS = \
 	main.o \

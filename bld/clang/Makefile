@@ -1,14 +1,11 @@
-EXEC = blinker.out
+EXEC = blinker
 
 OBJECTS = \
 	main.o \
 
+LLVM_DEPS += \
+	libmsp \
+
+SRC_ROOT = ../../src
+
 include $(MAKER_ROOT)/Makefile.clang
-
-CFLAGS += \
-
-LFLAGS += \
-
-LIBS += \
-
-VPATH = ../../src
