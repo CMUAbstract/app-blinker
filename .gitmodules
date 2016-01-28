@@ -1,0 +1,6 @@
+[submodule "lib/libmsp"]
+	path = lib/libmsp
+	url = /afs/ece.cmu.edu/project/abstract/repos/libmsp
+[submodule "maker"]
+	path = maker
+	url = /afs/ece.cmu.edu/project/abstract/repos/maker

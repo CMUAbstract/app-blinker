@@ -2,6 +2,11 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include <libmsp/watchdog.h>
+#include <libmsp/gpio.h>
+#include <libmsp/periph.h>
+#include <libmsp/clock.h>
+
 #include "pins.h"
 
 volatile unsigned work_x;
@@ -15,17 +20,11 @@ static void burn(unsigned iters)
 
 static void init_hw()
 {
-    WDTCTL = WDTPW | WDTHOLD;  // Stop watchdog timer
-
-    PM5CTL0 &= ~LOCKLPM5;
+    msp_watchdog_disable();
+    msp_gpio_unlock();
+    msp_clock_setup();
 
     GPIO(PORT_LED1, DIR) |= BIT(PIN_LED1);
-
-    // set clock speed to 4 MHz
-    CSCTL0_H = 0xA5;
-    CSCTL1 = DCOFSEL0 | DCOFSEL1;
-    CSCTL2 = SELA_0 | SELS_3 | SELM_3;
-    CSCTL3 = DIVA_0 | DIVS_0 | DIVM_0;
 }
 
 int main() {
