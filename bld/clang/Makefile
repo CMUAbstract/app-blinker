@@ -3,7 +3,7 @@ EXEC = blinker
 OBJECTS = \
 	main.o \
 
-LLVM_DEPS += \
+DEPS += \
 	libmsp \
 
 SRC_ROOT = ../../src
