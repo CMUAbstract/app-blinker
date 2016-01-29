@@ -3,3 +3,6 @@
 *.a
 *.map
 *.d
+*.bc
+*.raw.bc
+*.s
