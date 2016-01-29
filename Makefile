@@ -8,7 +8,7 @@ TOOLCHAINS = \
 	mementos \
 	dino \
 
-include maker/Makefile
+include lib/maker/Makefile
 
 # Not clear why export from maker/Makefile.env does not propagate
 export LLVM_ROOT

@@ -2,7 +2,7 @@
 	path = lib/libmsp
 	url = /afs/ece.cmu.edu/project/abstract/repos/libmsp
 [submodule "maker"]
-	path = maker
+	path = lib/maker
 	url = /afs/ece.cmu.edu/project/abstract/repos/maker
 [submodule "lib/mementos"]
 	path = lib/mementos
