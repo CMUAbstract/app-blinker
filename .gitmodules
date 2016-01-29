@@ -4,3 +4,6 @@
 [submodule "maker"]
 	path = maker
 	url = /afs/ece.cmu.edu/project/abstract/repos/maker
+[submodule "lib/mementos"]
+	path = lib/mementos
+	url = /afs/ece.cmu.edu/project/abstract/repos/mementos
