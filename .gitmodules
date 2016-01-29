@@ -7,3 +7,6 @@
 [submodule "lib/mementos"]
 	path = lib/mementos
 	url = /afs/ece.cmu.edu/project/abstract/repos/mementos
+[submodule "lib/dino"]
+	path = lib/dino
+	url = /afs/ece.cmu.edu/project/abstract/repos/dino
