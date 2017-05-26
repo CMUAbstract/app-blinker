@@ -7,3 +7,4 @@
 *.raw.bc
 *.s
 *.S
+*.dot
