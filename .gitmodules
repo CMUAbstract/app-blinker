@@ -1,12 +1,12 @@
 [submodule "ext/libmsp"]
 	path = ext/libmsp
-	url = /afs/ece.cmu.edu/project/abstract/repos/libmsp
+	url = https://github.com/CMUAbstract/libmsp
 [submodule "ext/maker"]
 	path = ext/maker
-	url = /afs/ece.cmu.edu/project/abstract/repos/maker
+	url = https://github.com/CMUAbstract/maker
 [submodule "ext/mementos"]
 	path = ext/mementos
-	url = /afs/ece.cmu.edu/project/abstract/repos/mementos
+	url = https://github.com/CMUAbstract/mementos
 [submodule "ext/dino"]
 	path = ext/dino
-	url = /afs/ece.cmu.edu/project/abstract/repos/dino
+	url = https://github.com/CMUAbstract/dino
