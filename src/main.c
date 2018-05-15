@@ -28,11 +28,15 @@ int main() {
     __enable_interrupt();
     LOG("blinker app\r\n");
 
-    GPIO(PORT_LED1, DIR) |= BIT(PIN_LED1);
+    GPIO(PORT_LED_1, DIR) |= BIT(PIN_LED_1);
+    GPIO(PORT_LED_2, DIR) |= BIT(PIN_LED_2);
+#if defined(PORT_LED_3)
+    GPIO(PORT_LED_3, DIR) |= BIT(PIN_LED_3);
+#endif
 
     while(1) {
 
-        GPIO(PORT_LED1, OUT) ^= BIT(PIN_LED1);
+        GPIO(PORT_LED_1, OUT) ^= BIT(PIN_LED_1);
 
         for (int i = 0; i < 100; ++i)
             burn(500);
