@@ -6,6 +6,7 @@
 #include <libmsp/gpio.h>
 #include <libmsp/periph.h>
 #include <libmsp/clock.h>
+#include <libio/console.h>
 
 #include "pins.h"
 
@@ -23,6 +24,10 @@ static void init_hw()
     msp_watchdog_disable();
     msp_gpio_unlock();
     msp_clock_setup();
+
+    INIT_CONSOLE();
+    __enable_interrupt();
+    LOG("blinker app\r\n");
 
     GPIO(PORT_LED1, DIR) |= BIT(PIN_LED1);
 }

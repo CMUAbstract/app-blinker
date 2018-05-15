@@ -16,7 +16,7 @@
 #define     PORT_LED1           4
 #define     PIN_LED1            0
 
-#elif defined(BOARD_MSP_TS430)
+#elif defined(BOARD_MSP_TS430) || defined(BOARD_MSP_EXP430FR5994)
 
 #define     PORT_LED1           1
 #define 	PIN_LED1			0

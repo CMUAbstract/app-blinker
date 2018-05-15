@@ -1,3 +1,5 @@
+export BOARD ?= msp-exp430fr5994
+
 TOOLS = \
 	mementos \
 	dino \
