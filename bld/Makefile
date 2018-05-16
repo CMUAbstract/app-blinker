@@ -6,6 +6,7 @@ OBJECTS = \
 DEPS += \
 	libmsp \
 	libio \
+	libchain \
 
 CONFIG_EDB ?= 0
 

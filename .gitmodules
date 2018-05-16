@@ -13,3 +13,6 @@
 [submodule "ext/libio"]
 	path = ext/libio
 	url = https://github.com/CMUAbstract/libio.git
+[submodule "ext/libchain"]
+	path = ext/libchain
+	url = https://github.com/CMUAbstract/libchain.git
