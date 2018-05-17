@@ -17,6 +17,15 @@
 #define     PORT_LED_3           1
 #define     PIN_LED_3            0
 
+#elif defined(BOARD_EDB)
+
+#define     PORT_LED_1           J
+#define     PIN_LED_1            0
+#define     PORT_LED_2           J
+#define     PIN_LED_2            1
+#define     PORT_LED_3           J
+#define     PIN_LED_3            2
+
 #endif // BOARD_*
 
 #endif

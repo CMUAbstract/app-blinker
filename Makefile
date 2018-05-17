@@ -1,4 +1,6 @@
 export BOARD ?= msp-exp430fr5994
+#export BOARD ?= wisp
+#export BOARD ?= edb
 
 TOOLS = \
 	mementos \
