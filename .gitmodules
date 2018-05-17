@@ -13,3 +13,6 @@
 [submodule "ext/libio"]
 	path = ext/libio
 	url = https://github.com/CMUAbstract/libio.git
+[submodule "ext/libmspware"]
+	path = ext/libmspware
+	url = git@github.com:CMUAbstract/libmspware
