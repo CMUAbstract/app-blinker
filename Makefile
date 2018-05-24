@@ -27,8 +27,6 @@ DEPS += \
 	libio \
 	libchain:gcc \
 
-DEPS_clang += libmspbuiltins:gcc
-
 CONFIG_EDB ?= 0
 
 ifeq ($(BOARD),edb)
