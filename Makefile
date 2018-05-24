@@ -26,8 +26,6 @@ DEPS += \
 	libmsp \
 	libio \
 
-DEPS_clang += libmspbuiltins:gcc
-
 CONFIG_EDB ?= 0
 
 ifeq ($(BOARD),edb)
