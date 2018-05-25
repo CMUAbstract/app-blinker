@@ -73,10 +73,11 @@ export LIBMSP_DCO_FREQ = $(MAIN_CLOCK_FREQ)
 #export LIBMSPSOFTUART_TIMER = B.0.5
 
 # UART currently not supported with Clang
-#export LIBIO_BACKEND = hwuart
-#export LIBMSP_UART_IDX = 0
-#export LIBMSP_UART_PIN_TX = 2.0
-#export LIBMSP_UART_BAUDRATE = 115200
-#export LIBMSP_UART_CLOCK = SMCLK
+export LIBIO_BACKEND = hwuart
+export LIBMSP_UART_IDX = 0
+export LIBMSP_UART_PIN_TX = 2.0
+export LIBMSP_UART_BAUDRATE = 115200
+export LIBMSP_UART_CLOCK = SMCLK
+export LIBMSP_UART_SLEEP = 0
 
 include ext/maker/Makefile
