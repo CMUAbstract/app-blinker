@@ -25,7 +25,7 @@ OBJECTS = \
 DEPS += \
 	libmsp \
 	libio \
-	libchain:gcc \
+	libchain \
 
 CONFIG_EDB ?= 0
 
