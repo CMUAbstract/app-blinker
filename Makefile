@@ -1,6 +1,9 @@
-export BOARD ?= msp-exp430fr5994
+#export BOARD ?= msp-exp430fr5994
 #export BOARD ?= wisp
 #export BOARD ?= edb
+export BOARD ?= capybara
+export BOARD_MAJOR = 2
+export BOARD_MINOR = 0
 
 TOOLS = \
 	mementos \
