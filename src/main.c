@@ -39,7 +39,9 @@ int main() {
         GPIO(PORT_LED_1, OUT) ^= BIT(PIN_LED_1);
 
         for (int i = 0; i < 100; ++i)
-            burn(500);
+            burn(10000);
+
+        LOG("blink\r\n");
     }
 
     return 0;
