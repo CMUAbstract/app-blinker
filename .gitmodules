@@ -19,3 +19,9 @@
 [submodule "ext/libmspbuiltins"]
 	path = ext/libmspbuiltins
 	url = https://github.com/CMUAbstract/libmspbuiltins.git
+[submodule "ext/libcapybara"]
+	path = ext/libcapybara
+	url = git@github.com:CMUAbstract/libcapybara
+[submodule "ext/libfxl"]
+	path = ext/libfxl
+	url = git@github.com:CMUAbstract/libfxl

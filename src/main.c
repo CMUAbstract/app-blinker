@@ -7,6 +7,7 @@
 #include <libmsp/periph.h>
 #include <libmsp/clock.h>
 #include <libio/console.h>
+#include <libcapybara/capy_board_init.h>
 
 #include "pins.h"
 
@@ -22,6 +23,8 @@ static void burn(unsigned iters)
 int main() {
     msp_watchdog_disable();
     msp_gpio_unlock();
+
+    capy_board_init();
     msp_clock_setup();
 
     INIT_CONSOLE();
