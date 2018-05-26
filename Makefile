@@ -26,7 +26,7 @@ OBJECTS = \
 	main.o \
 
 DEPS += \
-	libcapybara:gcc \
+	libcapybara \
 	libfxl:gcc \
 	libmspware:gcc \
 	libio \
