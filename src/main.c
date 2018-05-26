@@ -7,7 +7,8 @@
 #include <libmsp/periph.h>
 #include <libmsp/clock.h>
 #include <libio/console.h>
-#include <libcapybara/capy_board_init.h>
+#include <libcapybara/capybara.h>
+#include <libcapybara/board.h>
 #include <libcapybara/reconfig.h>
 
 #include "pins.h"
@@ -28,12 +29,14 @@ int main() {
     msp_watchdog_disable();
     msp_gpio_unlock();
 
-    capy_board_init();
+    capybara_init();
     msp_clock_setup();
 
     INIT_CONSOLE();
     __enable_interrupt();
     LOG("blinker app\r\n");
+
+    capybara_board_init();
 
     GPIO(PORT_LED_1, DIR) |= BIT(PIN_LED_1);
     GPIO(PORT_LED_2, DIR) |= BIT(PIN_LED_2);
