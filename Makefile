@@ -58,10 +58,9 @@ export CLOCK_FREQ_MCLK = $(MAIN_CLOCK_FREQ)
 export LIBMSP_CLOCK_SOURCE = DCO
 export LIBMSP_DCO_FREQ = $(MAIN_CLOCK_FREQ)
 
-# Sleep currently not supported with Clang
-#export LIBMSP_SLEEP_TIMER = B.0.0
-#export LIBMSP_SLEEP_TIMER_CLK = ACLK
-#export LIBMSP_SLEEP_TIMER_DIV = 8*1
+export LIBMSP_SLEEP_TIMER = B.0.0
+export LIBMSP_SLEEP_TIMER_CLK = ACLK
+export LIBMSP_SLEEP_TIMER_DIV = 8*1
 
 # To use add: libmspsoftuart to DEPS
 #export LIBIO_BACKEND = swuart
