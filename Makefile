@@ -76,7 +76,6 @@ export LIBMSP_SLEEP_TIMER_DIV = 8*1
 #export LIBMSPSOFTUART_CLOCK_FREQ = $(MAIN_CLOCK_FREQ)
 #export LIBMSPSOFTUART_TIMER = B.0.5
 
-# UART currently not supported with Clang
 export LIBIO_BACKEND = hwuart
 export LIBMSP_UART_IDX = 0
 export LIBMSP_UART_PIN_TX = 2.0
