@@ -81,8 +81,7 @@ export LIBMSP_UART_IDX = 0
 export LIBMSP_UART_PIN_TX = 2.0
 export LIBMSP_UART_BAUDRATE = 115200
 export LIBMSP_UART_CLOCK = SMCLK
-export LIBMSP_UART_SLEEP = 0
-
+export LIBMSP_SLEEP = 0
 
 ifeq ($(BOARD),capybara)
 
