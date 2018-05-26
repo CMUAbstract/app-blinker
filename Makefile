@@ -85,6 +85,9 @@ export LIBMSP_SLEEP = 0
 
 ifeq ($(BOARD),capybara)
 
+# Set to 1 when running from a plugged-in wired power supply
+export LIBCAPYBARA_CONT_POWER = 0
+
 export LIBCAPYBARA_VBANK_COMP_REF = 1.2 # V
 export LIBCAPYBARA_VBANK_COMP_SETTLE_MS = 0.25
 
