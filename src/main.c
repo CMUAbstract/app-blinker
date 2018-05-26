@@ -8,8 +8,12 @@
 #include <libmsp/clock.h>
 #include <libio/console.h>
 #include <libcapybara/capy_board_init.h>
+#include <libcapybara/reconfig.h>
 
 #include "pins.h"
+
+// When using reconfiguration (LIBCAPYBARA_SWITCH_DESIGN is set) need to define:
+// CAPYBARA_CFG_TABLE(0) = { };
 
 volatile unsigned work_x;
 

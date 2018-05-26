@@ -90,9 +90,10 @@ export LIBCAPYBARA_VBANK_COMP_SETTLE_MS = 0.25
 
 export LIBCAPYBARA_DEEP_DISCHARGE = 1.8 # V
 
-export LIBCAPYBARA_NUM_BANKS = 4
-export LIBCAPYBARA_SWITCH_DESIGN = NO
-export LIBCAPYBARA_SWITCH_CONTROL = ONE_PIN
+# If using reconfiguration, remember to define the power config table
+#export LIBCAPYBARA_NUM_BANKS = 4
+#export LIBCAPYBARA_SWITCH_DESIGN = NO
+#export LIBCAPYBARA_SWITCH_CONTROL = ONE_PIN
 
 ifeq ($(BOARD_MAJOR),1)
 
