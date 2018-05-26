@@ -140,7 +140,7 @@ export LIBCAPYBARA_BANK_PORT_0 = J.0
 export LIBCAPYBARA_BANK_PORT_1 = J.1
 export LIBCAPYBARA_BANK_PORT_2 = J.2
 export LIBCAPYBARA_BANK_PORT_3 = J.3
-else
+else ifneq ($(LIBCAPYBARA_SWITCH_CONTROL),)
 $(error Given switch control type not supported on given board version)
 endif # LIBCAPYBARA_SWITCH_CONTROL
 
