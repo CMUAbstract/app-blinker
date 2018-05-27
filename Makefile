@@ -8,17 +8,20 @@ export BOARD_MINOR = 0
 TOOLS = \
 	mementos \
 	dino \
+	alpaca \
 
 TOOLCHAINS = \
 	gcc \
 	clang \
 	mementos \
 	dino \
+	alpaca \
 
 # Paths to toolchains here if not in or different from defaults in Makefile.env
 
 export MEMENTOS_ROOT ?= $(LIB_ROOT)/mementos
 export DINO_ROOT ?= $(LIB_ROOT)/dino
+export ALPACA_ROOT ?= $(LIB_ROOT)/alpaca
 
 EXEC = blinker
 
@@ -31,7 +34,6 @@ DEPS += \
 	libmspware:gcc \
 	libio \
 	libmsp \
-	libchain \
 
 CONFIG_EDB ?= 0
 

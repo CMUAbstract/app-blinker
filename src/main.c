@@ -11,7 +11,7 @@
 #include <libcapybara/board.h>
 #include <libcapybara/reconfig.h>
 
-#include <libchain/chain.h>
+#include <libalpaca/alpaca.h>
 
 #include "pins.h"
 
@@ -22,36 +22,15 @@
 #define NUM_BLINKS_PER_TASK       5
 #define WAIT_TICKS                3
 
-struct msg_blinks {
-    CHAN_FIELD(unsigned, blinks);
-};
+TASK(task_init)
+TASK(task_1)
+TASK(task_2)
+TASK(task_3)
 
-struct msg_tick {
-    CHAN_FIELD(unsigned, tick);
-};
-
-struct msg_self_tick {
-    SELF_CHAN_FIELD(unsigned, tick);
-};
-#define FIELD_INIT_msg_self_tick { \
-    SELF_FIELD_INITIALIZER \
-}
-
-struct msg_duty_cycle {
-    CHAN_FIELD(unsigned, duty_cycle);
-};
-
-TASK(1, task_init)
-TASK(2, task_1)
-TASK(3, task_2)
-TASK(4, task_3)
-
-CHANNEL(task_init, task_1, msg_blinks);
-CHANNEL(task_init, task_3, msg_tick);
-CHANNEL(task_1, task_2, msg_blinks);
-CHANNEL(task_2, task_1, msg_blinks);
-SELF_CHANNEL(task_3, msg_self_tick);
-MULTICAST_CHANNEL(msg_duty_cycle, ch_duty_cycle, task_init, task_1, task_2);
+GLOBAL_SB(unsigned, blinks);
+GLOBAL_SB(unsigned, tick);
+GLOBAL_SB(unsigned, duty_cycle);
+GLOBAL_SB(unsigned, wait_tick);
 
 // When using reconfiguration (LIBCAPYBARA_SWITCH_DESIGN is set) need to define:
 // CAPYBARA_CFG_TABLE(0) = { };
@@ -65,7 +44,7 @@ static void burn(uint32_t iters)
         work_x++;
 }
 
-int main() {
+void init() {
     msp_watchdog_disable();
     msp_gpio_unlock();
 
@@ -83,8 +62,6 @@ int main() {
 #if defined(PORT_LED_3)
     GPIO(PORT_LED_3, DIR) |= BIT(PIN_LED_3);
 #endif
-
-    return chain_main();
 }
 
 static void blink_led1(unsigned blinks, unsigned duty_cycle) {
@@ -123,22 +100,15 @@ void task_init()
     GPIO(PORT_LED_2, OUT) &= ~BIT(PIN_LED_2);
     burn(INIT_TASK_DURATION_ITERS);
 
-    unsigned blinks = NUM_BLINKS_PER_TASK;
-    CHAN_OUT1(unsigned, blinks, blinks, CH(task_init, task_1));
-    unsigned tick = 0;
-    CHAN_OUT1(unsigned, tick, tick, CH(task_init, task_3));
-    unsigned duty_cycle = 75;
-    CHAN_OUT1(unsigned, duty_cycle, duty_cycle,
-             MC_OUT_CH(ch_duty_cycle, task_init, task_1, task_2));
+    GV(blinks) = NUM_BLINKS_PER_TASK;
+    GV(tick) = 0;
+    GV(duty_cycle) = 75;
 
     TRANSITION_TO(task_3);
 }
 
 void task_1()
 {
-    unsigned blinks;
-    unsigned duty_cycle;
-
     LOG("task 1\r\n");
 
     // Solid flash signifying beginning of task
@@ -147,25 +117,16 @@ void task_1()
     GPIO(PORT_LED_1, OUT) &= ~BIT(PIN_LED_1);
     burn(TASK_START_DURATION_ITERS);
 
-    blinks = *CHAN_IN2(unsigned, blinks, CH(task_init, task_1), CH(task_2, task_1));
-    duty_cycle = *CHAN_IN1(unsigned, duty_cycle,
-                           MC_IN_CH(ch_duty_cycle, task_init, task_1));
+    LOG("task 1: blinks %u dc %u\r\n", GV(blinks), GV(duty_cycle));
 
-    LOG("task 1: blinks %u dc %u\r\n", blinks, duty_cycle);
-
-    blink_led1(blinks, duty_cycle);
-    blinks++;
-
-    CHAN_OUT1(unsigned, blinks, blinks, CH(task_1, task_2));
+    blink_led1(GV(blinks), GV(duty_cycle));
+    GV(blinks)++;
 
     TRANSITION_TO(task_2);
 }
 
 void task_2()
 {
-    unsigned blinks;
-    unsigned duty_cycle;
-
     LOG("task 2\r\n");
 
     // Solid flash signifying beginning of task
@@ -174,26 +135,17 @@ void task_2()
     GPIO(PORT_LED_2, OUT) &= ~BIT(PIN_LED_2);
     burn(TASK_START_DURATION_ITERS);
 
-    blinks = *CHAN_IN1(unsigned, blinks, CH(task_1, task_2));
-    duty_cycle = *CHAN_IN1(unsigned, duty_cycle,
-                           MC_IN_CH(ch_duty_cycle, task_init, task_2));
+    LOG("task 2: blinks %u dc %u\r\n", GV(blinks), GV(duty_cycle));
 
-    LOG("task 2: blinks %u dc %u\r\n", blinks, duty_cycle);
-
-    blink_led2(blinks, duty_cycle);
-    blinks++;
-
-    CHAN_OUT1(unsigned, blinks, blinks, CH(task_2, task_1));
+    blink_led2(GV(blinks), GV(duty_cycle));
+    GV(blinks)++;
 
     TRANSITION_TO(task_3);
 }
 
 void task_3()
 {
-    unsigned wait_tick = *CHAN_IN2(unsigned, tick, CH(task_init, task_3),
-                                                   SELF_IN_CH(task_3));
-
-    LOG("task 3: wait tick %u\r\n", wait_tick);
+    LOG("task 3: wait tick %u\r\n", GV(wait_tick));
 
     GPIO(PORT_LED_1, OUT) |= BIT(PIN_LED_1);
     GPIO(PORT_LED_2, OUT) |= BIT(PIN_LED_2);
@@ -202,14 +154,13 @@ void task_3()
     GPIO(PORT_LED_2, OUT) &= ~BIT(PIN_LED_2);
     burn(WAIT_TICK_DURATION_ITERS);
 
-    if (++wait_tick < WAIT_TICKS) {
-        CHAN_OUT1(unsigned, tick, wait_tick, SELF_OUT_CH(task_3));
+    if (++GV(wait_tick) < WAIT_TICKS) {
         TRANSITION_TO(task_3);
     } else {
-        unsigned tick = 0;
-        CHAN_OUT1(unsigned, tick, tick, SELF_OUT_CH(task_3));
+        GV(wait_tick) = 0;
         TRANSITION_TO(task_1);
     }
 }
 
 ENTRY_TASK(task_init)
+INIT_FUNC(init)
