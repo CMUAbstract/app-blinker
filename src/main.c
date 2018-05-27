@@ -7,6 +7,9 @@
 #include <libmsp/periph.h>
 #include <libmsp/clock.h>
 #include <libio/console.h>
+#include <libcapybara/capybara.h>
+#include <libcapybara/board.h>
+#include <libcapybara/reconfig.h>
 
 #include <libchain/chain.h>
 
@@ -50,6 +53,8 @@ CHANNEL(task_2, task_1, msg_blinks);
 SELF_CHANNEL(task_3, msg_self_tick);
 MULTICAST_CHANNEL(msg_duty_cycle, ch_duty_cycle, task_init, task_1, task_2);
 
+// When using reconfiguration (LIBCAPYBARA_SWITCH_DESIGN is set) need to define:
+// CAPYBARA_CFG_TABLE(0) = { };
 
 volatile unsigned work_x;
 
@@ -63,11 +68,15 @@ static void burn(uint32_t iters)
 int main() {
     msp_watchdog_disable();
     msp_gpio_unlock();
+
+    capybara_init();
     msp_clock_setup();
 
     INIT_CONSOLE();
     __enable_interrupt();
     LOG("blinker app\r\n");
+
+    capybara_board_init();
 
     GPIO(PORT_LED_1, DIR) |= BIT(PIN_LED_1);
     GPIO(PORT_LED_2, DIR) |= BIT(PIN_LED_2);
