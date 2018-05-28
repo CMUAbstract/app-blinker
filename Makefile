@@ -36,10 +36,10 @@ TOOLCHAINS = \
 	mementos \
 	dino \
 
-# Paths to toolchains here if not in or different from defaults in Makefile.env
+# Configure toolchains
 
-export MEMENTOS_ROOT ?= $(LIB_ROOT)/mementos
-export DINO_ROOT ?= $(LIB_ROOT)/dino
+export MEMENTOS_MODE = latch
+export MEMENTOS_TIMER = 1
 
 EXEC = blinker
 
@@ -170,6 +170,5 @@ endif # LIBCAPYBARA_SWITCH_CONTROL
 
 endif # BOARD_MAJOR
 endif # BOARD == capybara
-
 
 include ext/maker/Makefile
