@@ -1,9 +1,30 @@
-#export BOARD ?= msp-exp430fr5994
-#export BOARD ?= wisp
-#export BOARD ?= edb
-export BOARD ?= capybara
-export BOARD_MAJOR = 2
-export BOARD_MINOR = 0
+#BOARD = msp-exp430fr5994
+#DEVICE  = msp430fr5994
+
+#BOARD = msp-exp430fr6989
+#DEVICE  = msp430fr6989
+
+#BOARD = wisp
+#DEVICE  = msp430fr5969
+
+#BOARD = edb
+#DEVICE  = msp430f5340
+
+#BOARD = capybara
+#BOARD_MAJOR = 1
+#BOARD_MINOR = 0
+#DEVICE  = msp430fr5949
+
+#BOARD = sprite-edb
+#DEVICE  = cc430f5137
+
+#BOARD = sprite-app
+#DEVICE = msp430fr5949
+
+BOARD = capybara
+BOARD_MAJOR = 2
+BOARD_MINOR = 0
+DEVICE  = msp430fr5994
 
 TOOLS = \
 	mementos \
