@@ -11,6 +11,13 @@
 #include <libcapybara/board.h>
 #include <libcapybara/reconfig.h>
 
+#ifdef DINO
+#include <libdino/dino.h>
+#else // !DINO
+#define DINO_TASK_BOUNDARY(...)
+#define DINO_RESTORE_CHECK()
+#endif // !DINO
+
 #include "pins.h"
 
 // When using reconfiguration (LIBCAPYBARA_SWITCH_DESIGN is set) need to define:
@@ -44,7 +51,11 @@ int main() {
     GPIO(PORT_LED_3, DIR) |= BIT(PIN_LED_3);
 #endif
 
+    DINO_RESTORE_CHECK();
+
     while(1) {
+
+        DINO_TASK_BOUNDARY(0);
 
         GPIO(PORT_LED_1, OUT) ^= BIT(PIN_LED_1);
 
