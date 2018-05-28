@@ -4,12 +4,6 @@
 [submodule "ext/maker"]
 	path = ext/maker
 	url = https://github.com/CMUAbstract/maker
-[submodule "ext/mementos"]
-	path = ext/mementos
-	url = https://github.com/CMUAbstract/mementos
-[submodule "ext/dino"]
-	path = ext/dino
-	url = https://github.com/CMUAbstract/dino
 [submodule "ext/libio"]
 	path = ext/libio
 	url = https://github.com/CMUAbstract/libio.git
