@@ -10,6 +10,9 @@
 [submodule "ext/dino"]
 	path = ext/dino
 	url = https://github.com/CMUAbstract/dino
+[submodule "ext/libchain"]
+	path = ext/libio
+	url = https://github.com/CMUAbstract/libchain.git
 [submodule "ext/libio"]
 	path = ext/libio
 	url = https://github.com/CMUAbstract/libio.git
