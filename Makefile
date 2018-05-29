@@ -72,9 +72,9 @@ export LIBMSP_STARTUP_VOLTAGE_WORKAROUNDS = disable-pmm
 export LIBMSP_CORE_VOLTAGE_LEVEL = 3
 
 export MAIN_CLOCK_FREQ = 24000000
-else # BOARD != sprite-edb
+else # BOARD != edb
 export MAIN_CLOCK_FREQ = 8000000
-endif # BOARD != sprite-edb
+endif # BOARD != edb
 
 
 export CLOCK_FREQ_ACLK = 32768
