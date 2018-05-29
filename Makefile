@@ -48,17 +48,28 @@ EXEC = blinker
 OBJECTS = \
 	main.o \
 
+ifeq ($(BOARD),capybara)
 DEPS += \
 	libcapybara \
 	libfxl:gcc \
 	libmspware:gcc \
+
+endif # BOARD == capybara
+
+DEPS += \
 	libio \
 	libmsp \
+
+ifeq ($(BOARD),edb)
+DEPS += \
+	libmspware:gcc \
+
+endif # BOARD == edb
+
 
 CONFIG_EDB ?= 0
 
 ifeq ($(BOARD),edb)
-DEPS += libmspware:gcc
 
 export LIBMSP_XT1_FREQ = 32678
 export LIBMSP_XT1_CAP = 12
