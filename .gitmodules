@@ -25,3 +25,6 @@
 [submodule "ext/libfxl"]
 	path = ext/libfxl
 	url = git@github.com:CMUAbstract/libfxl
+[submodule "ext/libmspsoftuart"]
+	path = ext/libmspsoftuart
+	url = https://github.com/CMUAbstract/libmspsoftuart.git
