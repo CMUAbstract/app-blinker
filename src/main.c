@@ -7,9 +7,12 @@
 #include <libmsp/periph.h>
 #include <libmsp/clock.h>
 #include <libio/console.h>
+
+#ifdef BOARD_CAPYBARA
 #include <libcapybara/capybara.h>
 #include <libcapybara/board.h>
 #include <libcapybara/reconfig.h>
+#endif // BOARD_CAPYBARA
 
 #include <libchain/chain.h>
 
@@ -69,14 +72,19 @@ int main() {
     msp_watchdog_disable();
     msp_gpio_unlock();
 
+#ifdef BOARD_CAPYBARA
     capybara_init();
+#endif // BOARD_CAPYBARA
+
     msp_clock_setup();
 
     INIT_CONSOLE();
     __enable_interrupt();
     LOG("blinker app\r\n");
 
+#ifdef BOARD_CAPYBARA
     capybara_board_init();
+#endif // BOARD_CAPYBARA
 
     GPIO(PORT_LED_1, DIR) |= BIT(PIN_LED_1);
     GPIO(PORT_LED_2, DIR) |= BIT(PIN_LED_2);

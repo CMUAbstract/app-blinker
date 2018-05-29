@@ -1,7 +1,7 @@
-#BOARD = msp-exp430fr5994
+#BOARD = mspexp430fr5994
 #DEVICE  = msp430fr5994
 
-#BOARD = msp-exp430fr6989
+#BOARD = mspexp430fr6989
 #DEVICE  = msp430fr6989
 
 #BOARD = wisp
@@ -15,10 +15,10 @@
 #BOARD_MINOR = 0
 #DEVICE  = msp430fr5949
 
-#BOARD = sprite-edb
+#BOARD = spriteedb
 #DEVICE  = cc430f5137
 
-#BOARD = sprite-app
+#BOARD = spriteapp
 #DEVICE = msp430fr5949
 
 BOARD = capybara
@@ -48,18 +48,29 @@ EXEC = blinker
 OBJECTS = \
 	main.o \
 
+ifeq ($(BOARD),capybara)
 DEPS += \
 	libcapybara \
 	libfxl:gcc \
 	libmspware:gcc \
+
+endif # BOARD == capybara
+
+DEPS += \
 	libio \
 	libmsp \
 	libchain \
 
+ifeq ($(BOARD),edb)
+DEPS += \
+	libmspware:gcc \
+
+endif # BOARD == edb
+
+
 CONFIG_EDB ?= 0
 
 ifeq ($(BOARD),edb)
-DEPS += libmspware:gcc
 
 export LIBMSP_XT1_FREQ = 32678
 export LIBMSP_XT1_CAP = 12
@@ -73,9 +84,9 @@ export LIBMSP_STARTUP_VOLTAGE_WORKAROUNDS = disable-pmm
 export LIBMSP_CORE_VOLTAGE_LEVEL = 3
 
 export MAIN_CLOCK_FREQ = 24000000
-else # BOARD != sprite-edb
+else # BOARD != edb
 export MAIN_CLOCK_FREQ = 8000000
-endif # BOARD != sprite-edb
+endif # BOARD != edb
 
 
 export CLOCK_FREQ_ACLK = 32768
