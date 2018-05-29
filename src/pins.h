@@ -8,8 +8,8 @@
 #define     PORT_LED_2           J
 #define     PIN_LED_2            6
 
-#elif defined(BOARD_MSP_TS430) || \
-      defined(BOARD_MSP_EXP430FR5994) || \
+#elif defined(BOARD_MSPTS430) || \
+      defined(BOARD_MSPEXP430FR5994) || \
       defined(BOARD_CAPYBARA)
 
 #define     PORT_LED_1           1
