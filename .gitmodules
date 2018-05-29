@@ -21,10 +21,10 @@
 	url = https://github.com/CMUAbstract/libmspbuiltins.git
 [submodule "ext/libcapybara"]
 	path = ext/libcapybara
-	url = git@github.com:CMUAbstract/libcapybara
+	url = https://github.com/CMUAbstract/libcapybara
 [submodule "ext/libfxl"]
 	path = ext/libfxl
-	url = git@github.com:CMUAbstract/libfxl
+	url = https://github.com/CMUAbstract/libfxl
 [submodule "ext/libmspsoftuart"]
 	path = ext/libmspsoftuart
 	url = https://github.com/CMUAbstract/libmspsoftuart.git
