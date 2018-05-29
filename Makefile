@@ -26,11 +26,13 @@ BOARD_MAJOR = 2
 BOARD_MINOR = 0
 DEVICE  = msp430fr5994
 
+# These are tools/toolchains that are themselves built by Maker
 TOOLS = \
 	mementos \
 	dino \
 	alpaca \
 
+# These are tools/toolchains that Maker uses to build the app
 TOOLCHAINS = \
 	gcc \
 	clang \
