@@ -1,7 +1,7 @@
-#BOARD = msp-exp430fr5994
+#BOARD = mspexp430fr5994
 #DEVICE  = msp430fr5994
 
-#BOARD = msp-exp430fr6989
+#BOARD = mspexp430fr6989
 #DEVICE  = msp430fr6989
 
 #BOARD = wisp
@@ -15,10 +15,10 @@
 #BOARD_MINOR = 0
 #DEVICE  = msp430fr5949
 
-#BOARD = sprite-edb
+#BOARD = spriteedb
 #DEVICE  = cc430f5137
 
-#BOARD = sprite-app
+#BOARD = spriteapp
 #DEVICE = msp430fr5949
 
 BOARD = capybara
