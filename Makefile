@@ -49,7 +49,7 @@ OBJECTS = \
 	main.o \
 
 ifeq ($(BOARD),capybara)
-DEPS += \
+DEPS = \
 	libcapybara \
 	libfxl:gcc \
 	libmspware:gcc \
