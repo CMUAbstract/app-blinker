@@ -180,4 +180,4 @@ endif # LIBCAPYBARA_SWITCH_CONTROL
 endif # BOARD_MAJOR
 endif # BOARD == capybara
 
-include ext/maker/Makefile
+include tools/maker/Makefile
