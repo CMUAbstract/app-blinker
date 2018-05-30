@@ -10,6 +10,8 @@
 
 #elif defined(BOARD_MSPTS430) || \
       defined(BOARD_MSPEXP430FR5994) || \
+      defined(BOARD_MSPEXP430FR5949) || \
+      defined(BOARD_MSPEXP430FR6989) || \
       defined(BOARD_CAPYBARA)
 
 #define     PORT_LED_1           1
